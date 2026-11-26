@@ -1,4 +1,5 @@
-# 로컬 백업 폴더 (커밋하지 않음)
-_backup_20261126/
+# 로컬 전용 (커밋하지 않음)
+_backup_*/
 _Claude_outputs/
-docs/
+*.zip
+__pycache__/
