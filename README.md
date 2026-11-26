@@ -2,7 +2,7 @@
 
 수업 자료 한 단위(강의 한 주, 교재 한 장, 자격증 한 과목)를 **시험 대비 PDF**로 만들어 주는 AI 스킬입니다. 슬라이드를 예쁘게 옮기는 게 아니라, 읽고 확인한 내용으로 직접 공부하고 스스로 시험해 볼 수 있는 자료를 만드는 게 목적입니다.
 
-프로그래밍과 수학뿐 아니라 역사, 법, 경제, 어학처럼 줄글이 많은 과목에도 쓸 수 있습니다. Claude(앱, Claude Code)와 Codex 같은 다른 AI 도구에서 씁니다.
+프로그래밍과 수학뿐 아니라 역사, 법, 경제, 어학처럼 줄글이 많은 과목에도 쓸 수 있습니다. Claude(앱, Claude Code), Codex, Antigravity에서 씁니다.
 
 `course-study-builder.skill`이 스킬 파일입니다. 내용은 ZIP 압축 파일과 같아서 확장자를 `.zip`으로 바꾸면 그대로 풀 수 있습니다.
 
@@ -18,13 +18,38 @@
 
 ## 설치
 
+먼저 `course-study-builder.skill`을 내려받습니다. Claude 앱은 이 파일을 그대로 올리고, 나머지는 압축을 풀어 나온 `course-study-builder` 폴더를 통째로 스킬 폴더에 넣습니다(확장자를 `.zip`으로 바꾸면 풀립니다). 폴더 안에 `SKILL.md`가 바로 보여야 합니다.
+
+### Claude
+
 | 쓰는 곳 | 방법 |
 |---|---|
-| Claude 앱 (웹·데스크톱) | 설정 > Capabilities에서 코드 실행과 파일 만들기를 켜고, Skills에 `course-study-builder.skill`을 올립니다. ([안내](https://support.claude.com/en/articles/12512180)) |
-| Claude Code | 압축을 풀어 `~/.claude/skills/course-study-builder/`에 둡니다. |
-| Codex 등 다른 도구 | 압축을 풀어 그 도구의 스킬 폴더(Codex는 `~/.codex/skills/`)에 같은 이름으로 둡니다. 안의 `SKILL.md`가 설명서입니다. |
+| Claude 앱 (웹·데스크톱) | 설정 > Capabilities에서 코드 실행과 파일 만들기를 켜고, Skills에 `course-study-builder.skill` 파일을 올립니다. ([안내](https://support.claude.com/en/articles/12512180)) |
+| Claude Code | `~/.claude/skills/course-study-builder/` |
 
-PDF를 만드는 컴퓨터에는 Python 3, Chrome이나 Edge, PyMuPDF(`pip install pymupdf`)가 있어야 합니다. 글꼴과 수식 조판기는 스킬에 들어 있어서 인터넷 없이도 됩니다.
+### Codex
+
+| 범위 | 넣을 곳 |
+|---|---|
+| 모든 프로젝트 | `~/.agents/skills/course-study-builder/` (예전 버전은 `~/.codex/skills/`) |
+| 한 저장소만 | `<저장소>/.agents/skills/course-study-builder/` |
+
+Codex CLI, IDE 확장, 데스크톱 앱에서 모두 됩니다. 넣은 뒤 목록에 안 보이면 Codex를 다시 켭니다. 직접 부를 때는 `$course-study-builder`라고 씁니다.
+
+### Antigravity
+
+| 범위 | 넣을 곳 |
+|---|---|
+| 모든 프로젝트 (앱, CLI `agy`, IDE 공통) | `~/.gemini/config/skills/course-study-builder/` |
+| 한 프로젝트만 | `<프로젝트>/.agents/skills/course-study-builder/` |
+
+`~/.gemini/antigravity-cli/skills/`나 `~/.gemini/skills/`에 넣으면 CLI만 읽고 데스크톱 앱은 읽지 않습니다. 직접 부를 때는 `/course-study-builder`라고 씁니다. 넣은 뒤 앱을 다시 켜야 보일 수 있습니다.
+
+Windows에서 `~`는 `C:\Users\<사용자 이름>`입니다. 예: `C:\Users\everh\.gemini\config\skills\course-study-builder\`
+
+### 공통으로 필요한 것
+
+PDF를 만드는 컴퓨터에는 Python 3, Chrome이나 Edge, PyMuPDF(`pip install pymupdf`)가 있어야 합니다. 글꼴과 수식 조판기는 스킬에 들어 있어서 인터넷 없이도 됩니다. Claude 앱은 Claude 쪽에서 실행하므로 따로 설치할 것이 없습니다.
 
 ## 처음 쓸 때
 
